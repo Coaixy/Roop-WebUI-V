@@ -30,7 +30,7 @@ function changeLanguage(e) {
           </details>
         </li>
       </ul>
-      <a class="btn btn-square btn-ghost" href="https://github.com/Coaixy/roop-webui" target="_blank">
+      <a class="btn btn-square btn-ghost" href="https://github.com/Coaixy/roop-webui-v" target="_blank">
         <img :src='githubSvg' class="" alt="Github Logo"/>
       </a>
     </div>
