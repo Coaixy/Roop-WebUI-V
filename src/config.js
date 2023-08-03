@@ -1,0 +1,5 @@
+const API_URL = ""
+export const SUBMIT = API_URL+"submit"
+export const DELETE  = API_URL+"delete"
+export const STATE = API_URL+"get_state"
+export const DOWNLOAD = API_URL+"download"
