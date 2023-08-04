@@ -3,7 +3,6 @@ import {state} from "../helper.js";
 import TableItem from "./TableItem.vue";
 import {getCurrentInstance, onMounted, ref} from "vue";
 
-const instance = getCurrentInstance()
 
 let index = 1
 let tokens = ref({})
