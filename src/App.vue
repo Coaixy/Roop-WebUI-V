@@ -64,6 +64,7 @@ function send() {
       const tokens = JSON.parse(localStorage.getItem("tokens"))
       tokens[data.data] = "Wait"
       localStorage.setItem("tokens", JSON.stringify(tokens))
+      document.querySelector("#my_modal_1").showModal()
     }
   })
 }
@@ -109,6 +110,16 @@ function send() {
         type="file"
         class="file-input max-w-xs mt-4 hidden w-0 h-0"
     />
+    <!--  Send Success  -->
+    <dialog id="my_modal_1" class="modal">
+      <form method="dialog" class="modal-box">
+        <h3 class="font-bold text-lg">Info</h3>
+        <p class="py-4">Task Create Succeed</p>
+        <div class="modal-action">
+          <button class="btn">OK!</button>
+        </div>
+      </form>
+    </dialog>
   </div>
 </template>
 
