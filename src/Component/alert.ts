@@ -1,5 +1,5 @@
 import { createVNode, render } from "vue";
-import dialog  from './dialog .vue';
+import dialog  from './dialog.vue';
 
 const alertMsg = (propData: any) => {
   let alert = createVNode(dialog , {
