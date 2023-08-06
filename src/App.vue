@@ -6,14 +6,14 @@ import ImgPreview from "./Component/ImgPreview.vue";
 import VideoPreview from "./Component/VideoPreview.vue";
 import Settings from "./Settings.vue";
 import NavBar from "./Component/NavBar.vue";
-
+import alertMsg from "./Component/alert.ts";
 import {ref} from "vue";
-
 
 let sourcePreviewType = ref(1)
 let sourcePreviewSrc = ref('')
 let targetPreviewType = ref(1)
 let targetPreviewSrc = ref('')
+
 
 /**
  * Preview
@@ -64,10 +64,20 @@ function send() {
       const tokens = JSON.parse(localStorage.getItem("tokens"))
       tokens[data.data] = "Wait"
       localStorage.setItem("tokens", JSON.stringify(tokens))
-      document.querySelector("#my_modal_1").showModal()
+        alertMsg({
+          title: "Success",
+          message: "Create task success",
+        })
+    } else {
+        alertMsg({
+          title: "Error",
+          message: data.message
+        })
     }
   })
 }
+
+
 </script>
 
 <template>
@@ -110,16 +120,6 @@ function send() {
         type="file"
         class="file-input max-w-xs mt-4 hidden w-0 h-0"
     />
-    <!--  Send Success  -->
-    <dialog id="my_modal_1" class="modal">
-      <form method="dialog" class="modal-box">
-        <h3 class="font-bold text-lg">Info</h3>
-        <p class="py-4">Task Create Succeed</p>
-        <div class="modal-action">
-          <button class="btn">OK!</button>
-        </div>
-      </form>
-    </dialog>
   </div>
 </template>
 
