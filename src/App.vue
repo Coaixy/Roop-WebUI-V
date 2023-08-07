@@ -1,5 +1,5 @@
 <script setup>
-import {submit} from "./helper.js";
+import { submit } from "./helper.js";
 import Box from "./Component/Box.vue";
 import History from "./Component/History.vue";
 import ImgPreview from "./Component/ImgPreview.vue";
@@ -7,7 +7,7 @@ import VideoPreview from "./Component/VideoPreview.vue";
 import Settings from "./Settings.vue";
 import NavBar from "./Component/NavBar.vue";
 import alertMsg from "./Component/alert.ts";
-import {ref} from "vue";
+import { ref } from "vue";
 
 let sourcePreviewType = ref(1)
 let sourcePreviewSrc = ref('')
@@ -17,8 +17,8 @@ let targetPreviewSrc = ref('')
 /**
  * Prevent write errors on initial access
  */
-if(localStorage.getItem("tokens") == undefined){
-  localStorage.setItem("tokens","{}")
+if (localStorage.getItem("tokens") == undefined) {
+  localStorage.setItem("tokens", "{}")
 }
 
 /**
@@ -70,16 +70,21 @@ function send() {
       const tokens = JSON.parse(localStorage.getItem("tokens"))
       tokens[data.data] = "Wait"
       localStorage.setItem("tokens", JSON.stringify(tokens))
-        alertMsg({
-          title: "Success",
-          message: "Create task success",
-        })
+      alertMsg({
+        title: "Success",
+        message: "Create task success",
+      })
     } else {
-        alertMsg({
-          title: "Error",
-          message: data.message
-        })
+      alertMsg({
+        title: "Error",
+        message: data.message
+      })
     }
+  }).catch(err => {
+    alertMsg({
+      title: "Error",
+      message: "Submit Error"
+    })
   })
 }
 
@@ -94,7 +99,7 @@ function send() {
       <VideoPreview v-if="sourcePreviewType === 2" :src='sourcePreviewSrc'></VideoPreview>
     </Box>
     <Box>
-      <History/>
+      <History />
     </Box>
     <Box>
       <ImgPreview v-if="targetPreviewType === 1" :src="targetPreviewSrc"></ImgPreview>
@@ -112,22 +117,11 @@ function send() {
     </div>
 
     <!-- Upload Tools -->
-    <input
-        id="uploadSourceEle"
-        accept=""
-        @change='imgPreview'
-        type="file"
-        class="file-input max-w-xs mt-4 hidden w-0 h-0"
-    />
-    <input
-        id="uploadTargetEle"
-        accept=""
-        @change='imgPreview'
-        type="file"
-        class="file-input max-w-xs mt-4 hidden w-0 h-0"
-    />
+    <input id="uploadSourceEle" accept="" @change='imgPreview' type="file"
+      class="file-input max-w-xs mt-4 hidden w-0 h-0" />
+    <input id="uploadTargetEle" accept="" @change='imgPreview' type="file"
+      class="file-input max-w-xs mt-4 hidden w-0 h-0" />
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
