@@ -15,6 +15,10 @@ let targetPreviewType = ref(1)
 let targetPreviewSrc = ref('')
 
 
+if(localStorage.getItem("tokens") == undefined){
+  localStorage.setItem("tokens","{}")
+}
+
 /**
  * Preview
  * @param event
