@@ -14,7 +14,9 @@ let sourcePreviewSrc = ref('')
 let targetPreviewType = ref(1)
 let targetPreviewSrc = ref('')
 
-
+/**
+ * Prevent write errors on initial access
+ */
 if(localStorage.getItem("tokens") == undefined){
   localStorage.setItem("tokens","{}")
 }
