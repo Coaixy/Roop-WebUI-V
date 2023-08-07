@@ -7,7 +7,8 @@ import Table from "./Table.vue";
 </script>
 
 <template>
-  <div class="tooltip" data-tip="History">
+  <div class="tooltip" data-tip="Click Me">
+    History
     <img :src='history' onclick="my_modal_2.showModal()" alt="history"/>
   </div>
   <dialog id="my_modal_2" class="modal">
