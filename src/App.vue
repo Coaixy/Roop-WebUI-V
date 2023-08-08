@@ -1,5 +1,5 @@
 <script setup>
-import { submit } from "./helper.js";
+import {submit} from "./helper.js";
 import Box from "./Component/Box.vue";
 import History from "./Component/History.vue";
 import ImgPreview from "./Component/ImgPreview.vue";
@@ -7,7 +7,7 @@ import VideoPreview from "./Component/VideoPreview.vue";
 import Settings from "./Settings.vue";
 import NavBar from "./Component/NavBar.vue";
 import alertMsg from "./Component/alert.ts";
-import { ref } from "vue";
+import {ref} from "vue";
 
 let sourcePreviewType = ref(1)
 let sourcePreviewSrc = ref('')
@@ -83,7 +83,7 @@ function send() {
   }).catch(err => {
     alertMsg({
       title: "Error",
-      message: "Submit Error"
+      message: err
     })
   })
 }
@@ -99,7 +99,7 @@ function send() {
       <VideoPreview v-if="sourcePreviewType === 2" :src='sourcePreviewSrc'></VideoPreview>
     </Box>
     <Box>
-      <History />
+      <History/>
     </Box>
     <Box>
       <ImgPreview v-if="targetPreviewType === 1" :src="targetPreviewSrc"></ImgPreview>
@@ -118,9 +118,9 @@ function send() {
 
     <!-- Upload Tools -->
     <input id="uploadSourceEle" accept="" @change='imgPreview' type="file"
-      class="file-input max-w-xs mt-4 hidden w-0 h-0" />
+           class="file-input max-w-xs mt-4 hidden w-0 h-0"/>
     <input id="uploadTargetEle" accept="" @change='imgPreview' type="file"
-      class="file-input max-w-xs mt-4 hidden w-0 h-0" />
+           class="file-input max-w-xs mt-4 hidden w-0 h-0"/>
   </div>
 </template>
 
