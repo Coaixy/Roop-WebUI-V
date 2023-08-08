@@ -1,4 +1,5 @@
 import { createVNode, render } from "vue";
+// @ts-ignore
 import dialog  from './dialog.vue';
 
 const alertMsg = (propData: any) => {
@@ -7,7 +8,7 @@ const alertMsg = (propData: any) => {
   });
   render(null, document.querySelector('body') as HTMLElement);
   render(alert , document.querySelector('body') as HTMLElement);
-  document.querySelector("#my_modal_1").showModal()
+  (document.querySelector("#my_modal_1") as HTMLDialogElement).showModal()
 }
 
 export default alertMsg;
