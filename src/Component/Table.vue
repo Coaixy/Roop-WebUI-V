@@ -9,11 +9,56 @@ let tokens = ref({})
 tokens.value = JSON.parse(localStorage.getItem("tokens"))
 
 onMounted(() => {
+  initDelete()
   setInterval(() => {
     updateTokens()
     updateState()
   }, 3000);
 })
+
+function initDelete() {
+  let index = 0
+  for (const item in tokens.value) {
+    setTimeout(() => {
+      state(item).then(data => {
+        const code = data.data
+        switch (code) {
+          case 0: {
+            tokens.value[item] = "Wait"
+            break
+          }
+          case 1: {
+            tokens.value[item] = "Running"
+            break
+          }
+          case 2: {
+            tokens.value[item] = "Success"
+            break
+          }
+          case 3: {
+            tokens.value[item] = "Fail"
+            break
+          }
+          case null : {
+            let tempObj = tokens.value
+            delete tempObj[item]
+            console.log(tempObj)
+            tokens.value = tempObj
+            break
+          }
+        }
+        localStorage.setItem("tokens", JSON.stringify(tokens.value))
+        tokens.value = JSON.parse(localStorage.getItem("tokens"))
+        if (index >= 1000) {
+          index = 1
+        } else {
+          index++
+        }
+      })
+    }, index * 500)
+
+  }
+}
 
 function updateTokens() {
   tokens.value = JSON.parse(localStorage.getItem("tokens"))
