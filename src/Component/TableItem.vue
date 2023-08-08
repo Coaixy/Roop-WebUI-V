@@ -6,7 +6,6 @@ const emit = defineEmits(['updateTokens'])
 const props = defineProps(['token', 'status'])
 let token = props.token
 let status = props.status
-let tokens = props.tokens
 
 let url = download(token)
 
