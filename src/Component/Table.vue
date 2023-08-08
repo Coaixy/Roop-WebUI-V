@@ -55,6 +55,13 @@ function updateState() {
             tokens.value[item] = "Fail"
             break
           }
+          case null : {
+            let tempObj = tokens.value
+            delete tempObj[item]
+            console.log(tempObj)
+            tokens.value = tempObj
+            break
+          }
         }
         localStorage.setItem("tokens", JSON.stringify(tokens.value))
         tokens.value = JSON.parse(localStorage.getItem("tokens"))
