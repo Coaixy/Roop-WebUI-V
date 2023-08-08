@@ -1,7 +1,7 @@
 <script setup>
 import {state} from "../helper.js";
 import TableItem from "./TableItem.vue";
-import {getCurrentInstance, onMounted, ref} from "vue";
+import {onMounted, ref} from "vue";
 
 
 let index = 1
@@ -24,7 +24,6 @@ function sortObj(obj) {
   for (var i in obj) {
     arr.push([obj[i], i]);
   }
-  ;
   arr.reverse();
   var len = arr.length;
   var obj = {};
@@ -71,8 +70,8 @@ function updateState() {
 </script>
 
 <template>
-  <div class="">
-    <table class="table">
+  <div>
+    <table>
       <!-- head -->
       <thead>
       <tr>
