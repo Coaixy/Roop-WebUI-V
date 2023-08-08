@@ -9,9 +9,9 @@ import Table from "./Table.vue";
 <template>
   <div class="tooltip" data-tip="Click Me">
     History
-    <img :src='history' onclick="my_modal_2.showModal()" alt="history"/>
+    <img :src='history' onclick="historyModal.showModal()" alt="history"/>
   </div>
-  <dialog id="my_modal_2" class="modal">
+  <dialog id="historyModal" class="modal">
     <form method="dialog" class="modal-box">
       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
       <!-- Modal Title -->
