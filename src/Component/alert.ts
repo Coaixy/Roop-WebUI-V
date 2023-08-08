@@ -8,7 +8,7 @@ const alertMsg = (propData: any) => {
   });
   render(null, document.querySelector('body') as HTMLElement);
   render(alert , document.querySelector('body') as HTMLElement);
-  (document.querySelector("#my_modal_1") as HTMLDialogElement).showModal()
+  (document.querySelector("#AlertModal") as HTMLDialogElement).showModal()
 }
 
 export default alertMsg;
