@@ -14,11 +14,18 @@ let sourcePreviewSrc = ref('')
 let targetPreviewType = ref(1)
 let targetPreviewSrc = ref('')
 
+let swapperMode = ref(localStorage.getItem("swapper") != "true")
+let isSubmitting = ref(false)
+
 /**
  * Prevent write errors on initial access
  */
 if (localStorage.getItem("tokens") == undefined) {
   localStorage.setItem("tokens", "{}")
+}
+
+function updateSwapperMode(mode){
+  swapperMode.value = !mode
 }
 
 /**
@@ -54,6 +61,7 @@ function openUploadTarget() {
 }
 
 function send() {
+  isSubmitting.value = true
   const formData = new FormData();
   const sourceFile = document.querySelector("#uploadSourceEle").files[0]
   const targetFile = document.querySelector("#uploadTargetEle").files[0]
@@ -80,11 +88,13 @@ function send() {
         message: data.message
       })
     }
+    isSubmitting.value = false
   }).catch(err => {
     alertMsg({
       title: "Error",
       message: err
     })
+    isSubmitting.value = false
   })
 }
 
@@ -106,14 +116,14 @@ function send() {
       <VideoPreview v-if="targetPreviewType === 2" :src='targetPreviewSrc'></VideoPreview>
     </Box>
     <Box>
-      <button @click='openUploadSource' class="btn">Upload Source</button>
+      <button @click='openUploadSource' :disabled="swapperMode" class="btn">Upload Source</button>
     </Box>
     <div class="col-start-3 col-end-3 place-self-center">
       <button @click="openUploadTarget" class="btn">Upload Target</button>
     </div>
     <div class="row-start-3 col-start-2">
-      <Settings></Settings>
-      <button @click="send" class="btn">Submit</button>
+      <Settings @updateSwapperMode="updateSwapperMode"></Settings>
+      <button @click="send" class="btn" :disabled="isSubmitting">Submit</button>
     </div>
 
     <!-- Upload Tools -->
