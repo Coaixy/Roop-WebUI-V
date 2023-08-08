@@ -1,4 +1,4 @@
-const API_URL = ""
+const API_URL = "https://api.roop.nakpump.top:399/"
 export const SUBMIT = API_URL+"submit"
 export const DELETE  = API_URL+"delete"
 export const STATE = API_URL+"get_state"

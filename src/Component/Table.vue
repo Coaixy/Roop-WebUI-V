@@ -71,7 +71,7 @@ function updateState() {
 
 <template>
   <div>
-    <table>
+    <table class="table">
       <!-- head -->
       <thead>
       <tr>
