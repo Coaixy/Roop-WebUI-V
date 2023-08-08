@@ -1,5 +1,6 @@
 <script setup>
 import {ref} from "vue";
+const emit = defineEmits(['updateSwapperMode'])
 
 if (localStorage.getItem("swapper") == undefined) {
   localStorage.setItem("swapper", "true")
@@ -13,6 +14,7 @@ let enhancer = ref(localStorage.getItem("enhancer") === 'true')
 function saveSetting() {
   localStorage.setItem("swapper", document.querySelector("#swapper").checked)
   localStorage.setItem("enhancer", document.querySelector("#enhancer").checked)
+  emit("updateSwapperMode",document.querySelector("#swapper").checked)
 }
 </script>
 
